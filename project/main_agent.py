@@ -30,11 +30,7 @@ class MainAgent:
         google_api_key: Optional[str] = os.environ.get("GOOGLE_API_KEY")
         google_cx_id: Optional[str] = os.environ.get("GOOGLE_CX_ID")
         huggingface_api_key: Optional[str] = os.environ.get("HUGGINGFACE_API_KEY")
-        # print("--- API Key Debug Check ---")
-        # print(f"GOOGLE_API_KEY length: {len(google_api_key) if google_api_key else 0}")
-        # print(f"GOOGLE_CX_ID length: {len(google_cx_id) if google_cx_id else 0}")
-        # print(f"HUGGINGFACE_API_KEY length: {len(huggingface_api_key) if huggingface_api_key else 0}")
-       
+
         # 1. Initialize Memory
         self.memory = SessionMemory()
 

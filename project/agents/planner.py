@@ -24,7 +24,7 @@ class Planner:
         """
         self.logger.info(f"Received user goal: '{user_input}'")
 
-        # --- THE PERMANENT SOLUTION: CALLING THE LLM TOOL ---
+        # THE PERMANENT SOLUTION: CALLING THE LLM TOOL
         # The LLMTool will handle the call to Gemini or fallback to mock logic
         topics = self.llm_tool.decompose(user_input)
 
@@ -38,7 +38,7 @@ class Planner:
     def handle_message(self, message: A2AMessage) -> A2AMessage:
 
         if 'user_input' in message.content:
-            # --- STEP 1: DECOMPOSITION (MainAgent -> Planner) ---
+            # STEP 1: DECOMPOSITION (MainAgent -> Planner)
             user_input = message.content['user_input']
             self.goal_store[message.session_id] = user_input
 
@@ -52,7 +52,7 @@ class Planner:
             )
 
         elif 'validated_resources' in message.content:
-            # --- STEP 4: ASSEMBLE (Evaluator -> Planner) ---
+            # STEP 4: ASSEMBLE (Evaluator -> Planner)
             validated_resources: List[Dict[str, Any]] = message.content['validated_resources']
             self.logger.info(f"Received {len(validated_resources)} validated resources from Evaluator. Assembling final path.")
 

@@ -1,5 +1,5 @@
 import logging
-import json # <-- CRITICAL FIX: Import JSON library
+import json 
 from typing import Dict, Any
 from project.core.a2a_protocol import A2AMessage
 from project.tools.tools import Tool
@@ -29,8 +29,8 @@ class BaseAgent:
             ])
 
         elif "summarize" in prompt.lower() and self.name == "Worker":
-             # Worker mock response for summarization
-             return f"The worker found this resource on: {prompt.split('topic: ')[-1].split('\\n')[0]}."
+            # Worker mock response for summarization
+            return f"The worker found this resource on: {prompt.split('topic: ')[-1].split('\\n')[0]}."
 
         elif "vet the following" in prompt.lower() and self.name == "Evaluator":
             # Evaluator mock response

@@ -23,7 +23,7 @@ Filter out any resource older than 4 years. If a link is clearly broken (simulat
 Format the final output cleanly for the Planner to assemble.
 """
 
-# --- Example of Few-Shot Learning (ICL) ---
+# Example of Few-Shot Learning (ICL)
 
 PLANNER_ICL_EXAMPLE: Dict[str, str] = {
     "input": "Learn Data Science basics.",
