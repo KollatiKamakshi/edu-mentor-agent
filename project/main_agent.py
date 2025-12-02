@@ -3,17 +3,15 @@ import os
 import uuid
 from typing import Dict, Any, Optional
 
-# --- Import Core Components ---
+# Import Core Components
 from project.core.a2a_protocol import A2AMessage, Protocol
 from project.memory.session_memory import SessionMemory
 
-# --- Import Agents ---
+# Import Agents
 from project.agents.planner import Planner
 from project.agents.worker import Worker
 from project.agents.evaluator import Evaluator
 
-# --- Import Tools (THE ABSOLUTE FIX) ---
-# Your tools are located in 'tools.py' and 'llm_tool.py'
 from project.tools.tools import GoogleSearchTool, RealTextSummarizerTool, RealDataExtractorTool
 from project.tools.llm_tool import LLMTool
 
@@ -32,16 +30,15 @@ class MainAgent:
         google_api_key: Optional[str] = os.environ.get("GOOGLE_API_KEY")
         google_cx_id: Optional[str] = os.environ.get("GOOGLE_CX_ID")
         huggingface_api_key: Optional[str] = os.environ.get("HUGGINGFACE_API_KEY")
-        # ADD THESE LINES TO DEBUG
-        print("--- API Key Debug Check ---")
-        print(f"GOOGLE_API_KEY length: {len(google_api_key) if google_api_key else 0}")
-        print(f"GOOGLE_CX_ID length: {len(google_cx_id) if google_cx_id else 0}")
-        print(f"HUGGINGFACE_API_KEY length: {len(huggingface_api_key) if huggingface_api_key else 0}")
-        print("---------------------------")
-        # --- 1. Initialize Memory ---
+        # print("--- API Key Debug Check ---")
+        # print(f"GOOGLE_API_KEY length: {len(google_api_key) if google_api_key else 0}")
+        # print(f"GOOGLE_CX_ID length: {len(google_cx_id) if google_cx_id else 0}")
+        # print(f"HUGGINGFACE_API_KEY length: {len(huggingface_api_key) if huggingface_api_key else 0}")
+       
+        # 1. Initialize Memory
         self.memory = SessionMemory()
 
-        # --- 2. Initialize Tools ---
+        # 2. Initialize Tools
         self.tools = {
             "search": GoogleSearchTool(google_api_key, google_cx_id),
             "summarizer": RealTextSummarizerTool(huggingface_api_key),
@@ -50,7 +47,7 @@ class MainAgent:
         }
         self.logger.info(f"MainAgent initialized with tools: {list(self.tools.keys())}") # ADDED LOGGING
 
-        # --- 3. Initialize Agents ---
+        # 3. Initialize Agents
         self.agents = {
             "Planner": Planner(self.memory, self.tools['llm']),
             "Worker": Worker(self.tools),
@@ -96,7 +93,6 @@ class MainAgent:
         return final_output
 
 def run_agent(user_input: str) -> Dict[str, Any]:
-    # Need to run imports here too if MainAgent is run outside the class
     import os
     import uuid
     from project.tools.tools import GoogleSearchTool, RealTextSummarizerTool, RealDataExtractorTool
