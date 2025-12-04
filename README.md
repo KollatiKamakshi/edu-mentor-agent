@@ -6,8 +6,6 @@ It was built as part of the Google x Kaggle AI Agents Intensive – Capstone Pro
 The goal:
 Make high-quality education accessible to everyone, especially learners who struggle to find trustworthy, ad-free, up-to-date materials online.
 
-Try EduMentor on Hugging Face:
-https://huggingface.co/spaces/kollatikamakshi/edu-mentor-agent
 
 🚀 Problem Statement
 
